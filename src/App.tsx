@@ -14,39 +14,39 @@ gsap.registerPlugin(ScrollTrigger);
 const slides = [
   {
     title: "BENEFITS OF DIRECT PRIMARY CARE",
-    image: "https://res.cloudinary.com/dsprn0ew4/image/upload/v1773764500/Image_generationgenerate_imagespromptsa_highqualit_delpmaspu_hgjud7.jpg"
+    image: "https://res.cloudinary.com/dsprn0ew4/image/upload/f_auto,q_auto/v1773764500/Image_generationgenerate_imagespromptsa_highqualit_delpmaspu_hgjud7.jpg"
   },
   {
     title: "Unlimited visits",
-    image: "https://res.cloudinary.com/dsprn0ew4/image/upload/v1773764500/Based_on_the_scene_in_image_0png_an_open_minimalis_delpmaspu_dqi6nw.jpg"
+    image: "https://res.cloudinary.com/dsprn0ew4/image/upload/f_auto,q_auto/v1773764500/Based_on_the_scene_in_image_0png_an_open_minimalis_delpmaspu_dqi6nw.jpg"
   },
   {
     title: "Direct access",
-    image: "https://res.cloudinary.com/dsprn0ew4/image/upload/v1773764500/Based_on_the_image_showing_the_agenda_image_1png_a_delpmaspu_iwtfvw.jpg"
+    image: "https://res.cloudinary.com/dsprn0ew4/image/upload/f_auto,q_auto/v1773764500/Based_on_the_image_showing_the_agenda_image_1png_a_delpmaspu_iwtfvw.jpg"
   },
   {
     title: "Same/Next-day appt.",
-    image: "https://res.cloudinary.com/dsprn0ew4/image/upload/v1773764500/Based_on_the_image_showing_the_agenda_and_smartpho_delpmaspu_uczgzs.jpg"
+    image: "https://res.cloudinary.com/dsprn0ew4/image/upload/f_auto,q_auto/v1773764500/Based_on_the_image_showing_the_agenda_and_smartpho_delpmaspu_uczgzs.jpg"
   },
   {
     title: "30-60 min visits",
-    image: "https://res.cloudinary.com/dsprn0ew4/image/upload/v1773764499/Based_on_the_complete_desk_setup_agenda_smartphone_delpmaspu_rsvvtj.jpg"
+    image: "https://res.cloudinary.com/dsprn0ew4/image/upload/f_auto,q_auto/v1773764499/Based_on_the_complete_desk_setup_agenda_smartphone_delpmaspu_rsvvtj.jpg"
   },
   {
     title: "Transparent pricing",
-    image: "https://res.cloudinary.com/dsprn0ew4/image/upload/v1773764499/Based_on_the_complete_scene_image_5png_the_green_p_delpmaspu_yepcav.jpg"
+    image: "https://res.cloudinary.com/dsprn0ew4/image/upload/f_auto,q_auto/v1773764499/Based_on_the_complete_scene_image_5png_the_green_p_delpmaspu_yepcav.jpg"
   },
   {
     title: "Prevention & Wellness",
-    image: "https://res.cloudinary.com/dsprn0ew4/image/upload/v1773764499/Based_on_the_complete_scene_image_5png_the_green_p_delpmaspu_yepcav.jpg"
+    image: "https://res.cloudinary.com/dsprn0ew4/image/upload/f_auto,q_auto/v1773764499/Based_on_the_complete_scene_image_5png_the_green_p_delpmaspu_yepcav.jpg"
   },
   {
     title: "No insurance hassles",
-    image: "https://res.cloudinary.com/dsprn0ew4/image/upload/v1773764499/Based_on_the_complete_scene_image_6png_the_overall_delpmaspu_r4nui0.jpg"
+    image: "https://res.cloudinary.com/dsprn0ew4/image/upload/f_auto,q_auto/v1773764499/Based_on_the_complete_scene_image_6png_the_overall_delpmaspu_r4nui0.jpg"
   },
   {
     title: "Personalized care",
-    image: "https://res.cloudinary.com/dsprn0ew4/image/upload/v1773764499/Based_on_the_completely_clear_scene_image_7png_add_delpmaspu_qdeu8c.jpg"
+    image: "https://res.cloudinary.com/dsprn0ew4/image/upload/f_auto,q_auto/v1773764499/Based_on_the_completely_clear_scene_image_7png_add_delpmaspu_qdeu8c.jpg"
   }
 ];
 
@@ -742,7 +742,7 @@ const Founder = () => (
     <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center gap-16">
       <div className="w-64 h-64 md:w-80 md:h-96 glass-card rounded-[40px] overflow-hidden border-2 border-purple-500/30">
         <img 
-          src="https://res.cloudinary.com/dsprn0ew4/image/upload/v1773767420/Genera_esta_imagen_con_la_doctora_sonriendo_sin_te_delpmaspu_hltfcn.jpg" 
+          src="https://res.cloudinary.com/dsprn0ew4/image/upload/f_auto,q_auto/v1773767420/Genera_esta_imagen_con_la_doctora_sonriendo_sin_te_delpmaspu_hltfcn.jpg" 
           alt="Dr. Alba Nidia Nevarez"
           className="w-full h-full object-cover"
           referrerPolicy="no-referrer"

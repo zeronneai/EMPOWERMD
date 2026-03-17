@@ -24,6 +24,10 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+
+  .will-change-opacity {
+    will-change: opacity;
+  }
 }
 
 @keyframes meshMove {
