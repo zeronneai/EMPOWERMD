@@ -50,52 +50,108 @@ const slides = [
   }
 ];
 
-const Navbar = ({ onOpenServices, onOpenStory, onOpenWhatIs }: { onOpenServices: () => void; onOpenStory: () => void; onOpenWhatIs: () => void }) => (
-  <nav className="sticky top-6 z-50 w-[90%] max-w-5xl mx-auto mb-12">
-    <motion.div 
-      initial={{ y: -20, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      className="glass-card py-4 px-8 flex justify-between items-center rounded-[40px]"
-    >
-      <div className="text-xl font-bold tracking-tighter">
-        EMPOWER <span className="text-purple-400">MD</span>
-      </div>
-      <div className="hidden md:flex gap-8 text-sm uppercase tracking-widest font-light">
-        <button 
-          onClick={onOpenServices}
-          className="hover:text-purple-400 transition cursor-pointer uppercase tracking-widest text-sm"
-        >
-          SERVICES
-        </button>
-        <button 
-          onClick={onOpenStory}
-          className="hover:text-purple-400 transition cursor-pointer uppercase tracking-widest text-sm"
-        >
-          THE STORY
-        </button>
-        <button 
-          onClick={onOpenWhatIs}
-          className="hover:text-purple-400 transition cursor-pointer uppercase tracking-widest text-sm"
-        >
-          WHAT IS?
-        </button>
-      </div>
-      <div className="flex items-center gap-4">
-        <a 
-          href="https://empowermd.sigmamd.com/signup/membership2?step=enroll-members"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="bg-white text-black px-6 py-2 rounded-full text-sm font-bold hover:bg-purple-400 transition cursor-pointer"
-        >
-          JOIN NOW
-        </a>
-        <button className="md:hidden text-white">
-          <Menu size={24} />
-        </button>
-      </div>
-    </motion.div>
-  </nav>
-);
+const Navbar = ({ onOpenServices, onOpenStory, onOpenWhatIs }: { onOpenServices: () => void; onOpenStory: () => void; onOpenWhatIs: () => void }) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleNavClick = (callback: () => void) => {
+    callback();
+    setIsMenuOpen(false);
+  };
+
+  return (
+    <nav className="sticky top-6 z-50 w-[90%] max-w-5xl mx-auto mb-12">
+      <motion.div 
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        className="glass-card py-4 px-6 md:px-8 flex justify-between items-center rounded-[40px] relative"
+      >
+        <div className="text-lg md:text-xl font-bold tracking-tighter shrink-0">
+          EMPOWER <span className="text-purple-400">MD</span>
+        </div>
+        
+        {/* Desktop Links */}
+        <div className="hidden md:flex gap-8 text-sm uppercase tracking-widest font-light">
+          <button 
+            onClick={onOpenServices}
+            className="hover:text-purple-400 transition cursor-pointer uppercase tracking-widest text-sm"
+          >
+            SERVICES
+          </button>
+          <button 
+            onClick={onOpenStory}
+            className="hover:text-purple-400 transition cursor-pointer uppercase tracking-widest text-sm"
+          >
+            THE STORY
+          </button>
+          <button 
+            onClick={onOpenWhatIs}
+            className="hover:text-purple-400 transition cursor-pointer uppercase tracking-widest text-sm"
+          >
+            WHAT IS?
+          </button>
+        </div>
+
+        <div className="flex items-center gap-2 md:gap-4">
+          <a 
+            href="https://empowermd.sigmamd.com/signup/membership2?step=enroll-members"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden sm:block bg-white text-black px-4 md:px-6 py-2 rounded-full text-[10px] md:text-sm font-bold hover:bg-purple-400 transition cursor-pointer whitespace-nowrap"
+          >
+            JOIN NOW
+          </a>
+          <button 
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="md:hidden text-white p-2 hover:bg-white/10 rounded-full transition-colors flex items-center justify-center"
+            aria-label="Toggle menu"
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+
+        {/* Mobile Menu Dropdown */}
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -10, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -10, scale: 0.95 }}
+              transition={{ duration: 0.2 }}
+              className="absolute top-full left-0 right-0 mt-4 glass-card p-8 rounded-[30px] flex flex-col gap-8 md:hidden border border-white/10 z-[60] shadow-2xl"
+            >
+              <button 
+                onClick={() => handleNavClick(onOpenServices)}
+                className="text-left text-white hover:text-purple-400 transition uppercase tracking-[0.2em] text-sm font-bold border-b border-white/5 pb-4"
+              >
+                SERVICES
+              </button>
+              <button 
+                onClick={() => handleNavClick(onOpenStory)}
+                className="text-left text-white hover:text-purple-400 transition uppercase tracking-[0.2em] text-sm font-bold border-b border-white/5 pb-4"
+              >
+                THE STORY
+              </button>
+              <button 
+                onClick={() => handleNavClick(onOpenWhatIs)}
+                className="text-left text-white hover:text-purple-400 transition uppercase tracking-[0.2em] text-sm font-bold border-b border-white/5 pb-4"
+              >
+                WHAT IS?
+              </button>
+              <a 
+                href="https://empowermd.sigmamd.com/signup/membership2?step=enroll-members"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="sm:hidden bg-purple-500 text-white px-6 py-4 rounded-2xl text-center text-sm font-bold hover:bg-purple-600 transition"
+              >
+                JOIN NOW
+              </a>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.div>
+    </nav>
+  );
+};
 
 const Hero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
