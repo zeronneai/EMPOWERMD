@@ -27,7 +27,8 @@ const BenefitNode = ({ position, index, activeIndex, onHover }: {
   position: THREE.Vector3, 
   index: number, 
   activeIndex: number,
-  onHover: (i: number | null) => void 
+  onHover: (i: number | null) => void,
+  key?: React.Key
 }) => {
   const isActive = activeIndex === index;
   const meshRef = useRef<THREE.Mesh>(null);

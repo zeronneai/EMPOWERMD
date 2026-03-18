@@ -119,7 +119,7 @@ const HeroReveal: React.FC = () => {
                     "M0.5,0.1 C0.7,0.05 0.9,0.35 0.85,0.65 C0.8,0.9 0.65,0.98 0.5,0.92 C0.35,0.98 0.2,0.9 0.15,0.65 C0.1,0.35 0.3,0.05 0.5,0.1 Z",
                     "M0.5,0.05 C0.65,0.05 0.85,0.3 0.9,0.6 C0.95,0.9 0.75,0.95 0.5,0.95 C0.25,0.95 0.05,0.9 0.1,0.6 C0.15,0.3 0.35,0.05 0.5,0.05 Z"
                   ],
-                  scale: isHovering ? 0.55 : 0.4
+                  scale: isHovering ? 0.45 : 0.3
                 }}
                 transition={{ 
                   d: { duration: 4, repeat: Infinity, ease: "easeInOut" },
@@ -137,7 +137,7 @@ const HeroReveal: React.FC = () => {
                   d: [
                     "M0.5,0.2 C0.6,0.2 0.75,0.4 0.75,0.6 C0.75,0.8 0.65,0.85 0.5,0.85 C0.35,0.85 0.25,0.8 0.25,0.6 C0.25,0.4 0.4,0.2 0.5,0.2 Z"
                   ],
-                  scale: isHovering ? 0.45 : 0.3
+                  scale: isHovering ? 0.35 : 0.2
                 }}
                 style={{ 
                   x: trailTranslateX,
