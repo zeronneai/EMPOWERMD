@@ -16,9 +16,9 @@ const HeroReveal: React.FC = () => {
   const mouseX = useMotionValue(50);
   const mouseY = useMotionValue(50);
 
-  // Springs con diferentes configuraciones para crear el efecto de "estela" (trail)
-  const springConfig = { damping: 25, stiffness: 150, mass: 0.5 };
-  const trailConfig = { damping: 35, stiffness: 100, mass: 0.8 }; // Más lento para la estela
+  // Springs optimizados para fluidez (especialmente en mobile)
+  const springConfig = { damping: 30, stiffness: 200, mass: 0.5 };
+  const trailConfig = { damping: 40, stiffness: 150, mass: 0.7 };
   
   const smoothX = useSpring(mouseX, springConfig);
   const smoothY = useSpring(mouseY, springConfig);
@@ -26,13 +26,19 @@ const HeroReveal: React.FC = () => {
   const trailX = useSpring(mouseX, trailConfig);
   const trailY = useSpring(mouseY, trailConfig);
 
-  // Transformaciones para el clip-path principal
+  // Transformaciones para el clip-path principal (usando porcentajes para el SVG)
   const translateX = useTransform(smoothX, (v) => `${v - 50}%`);
   const translateY = useTransform(smoothY, (v) => `${v - 50}%`);
   
   // Transformaciones para la estela del clip-path
   const trailTranslateX = useTransform(trailX, (v) => `${v - 50}%`);
   const trailTranslateY = useTransform(trailY, (v) => `${v - 50}%`);
+
+  // Transformaciones para los elementos visuales (usando viewport units o px para mejor rendimiento GPU)
+  const visualX = useTransform(smoothX, (v) => `${v}%`);
+  const visualY = useTransform(smoothY, (v) => `${v}%`);
+  const visualTrailX = useTransform(trailX, (v) => `${v}%`);
+  const visualTrailY = useTransform(trailY, (v) => `${v}%`);
 
   const scrollToNext = () => {
     window.scrollTo({
@@ -146,17 +152,19 @@ const HeroReveal: React.FC = () => {
 
         {/* Elemento Visual "Estela" (Múltiples capas para efecto de rastro) */}
         <motion.div 
-          className="absolute z-30 pointer-events-none"
+          className="absolute z-30 pointer-events-none will-change-transform"
           style={{
-            left: smoothX.get() + '%',
-            top: smoothY.get() + '%',
-            x: '-50%',
-            y: '-50%',
+            left: 0,
+            top: 0,
+            x: visualX,
+            y: visualY,
+            translateX: '-50%',
+            translateY: '-50%',
             width: '140px',
             height: '140px',
             scale: isHovering ? 1.5 : 1,
             background: 'radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%)',
-            borderRadius: '40% 60% 70% 30% / 40% 50% 60% 50%', // Forma más de "mancha"
+            borderRadius: '40% 60% 70% 30% / 40% 50% 60% 50%',
             border: '1px solid rgba(255,255,255,0.08)',
             filter: 'blur(8px)',
           }}
@@ -171,12 +179,14 @@ const HeroReveal: React.FC = () => {
         />
         
         <motion.div 
-          className="absolute z-20 pointer-events-none opacity-50"
+          className="absolute z-20 pointer-events-none opacity-50 will-change-transform"
           style={{
-            left: trailX.get() + '%',
-            top: trailY.get() + '%',
-            x: '-50%',
-            y: '-50%',
+            left: 0,
+            top: 0,
+            x: visualTrailX,
+            y: visualTrailY,
+            translateX: '-50%',
+            translateY: '-50%',
             width: '100px',
             height: '100px',
             scale: isHovering ? 1.2 : 0.8,
