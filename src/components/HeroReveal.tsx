@@ -34,6 +34,13 @@ const HeroReveal: React.FC = () => {
   const trailTranslateX = useTransform(trailX, (v) => `${v - 50}%`);
   const trailTranslateY = useTransform(trailY, (v) => `${v - 50}%`);
 
+  const scrollToNext = () => {
+    window.scrollTo({
+      top: window.innerHeight,
+      behavior: 'smooth'
+    });
+  };
+
   useEffect(() => {
     const handlePointerMove = (e: PointerEvent) => {
       if (!containerRef.current) return;
@@ -82,8 +89,8 @@ const HeroReveal: React.FC = () => {
         <div 
           className="absolute inset-0 w-full h-full z-20 pointer-events-none"
           style={{
-            clipPath: `url(#blob-mask)`,
-            WebkitClipPath: `url(#blob-mask)`,
+            clipPath: `url(#water-drop-mask)`,
+            WebkitClipPath: `url(#water-drop-mask)`,
           }}
         >
           <img 
@@ -94,19 +101,19 @@ const HeroReveal: React.FC = () => {
           />
         </div>
 
-        {/* Definición del SVG para la máscara irregular */}
+        {/* Definición del SVG para la máscara de "gota de agua" */}
         <svg className="absolute w-0 h-0 overflow-hidden">
           <defs>
-            <clipPath id="blob-mask" clipPathUnits="objectBoundingBox">
-              {/* Mancha Principal */}
+            <clipPath id="water-drop-mask" clipPathUnits="objectBoundingBox">
+              {/* Gota Principal */}
               <motion.path
                 animate={{ 
                   d: [
-                    "M0.5,0.1 C0.7,0.05 0.95,0.2 0.9,0.5 C0.85,0.8 0.7,0.95 0.5,0.9 C0.3,0.85 0.05,0.7 0.1,0.4 C0.15,0.1 0.3,0.15 0.5,0.1 Z",
-                    "M0.5,0.15 C0.85,0.05 0.98,0.3 0.85,0.6 C0.7,0.9 0.85,0.98 0.5,0.85 C0.15,0.98 0.02,0.8 0.15,0.5 C0.28,0.2 0.15,0.05 0.5,0.15 Z",
-                    "M0.5,0.05 C0.95,0.1 0.8,0.45 0.98,0.7 C0.85,0.95 0.65,0.9 0.5,0.98 C0.35,0.9 0.15,0.95 0.02,0.7 C0.2,0.45 0.05,0.1 0.5,0.05 Z"
+                    "M0.5,0.05 C0.65,0.05 0.85,0.3 0.9,0.6 C0.95,0.9 0.75,0.95 0.5,0.95 C0.25,0.95 0.05,0.9 0.1,0.6 C0.15,0.3 0.35,0.05 0.5,0.05 Z",
+                    "M0.5,0.1 C0.7,0.05 0.9,0.35 0.85,0.65 C0.8,0.9 0.65,0.98 0.5,0.92 C0.35,0.98 0.2,0.9 0.15,0.65 C0.1,0.35 0.3,0.05 0.5,0.1 Z",
+                    "M0.5,0.05 C0.65,0.05 0.85,0.3 0.9,0.6 C0.95,0.9 0.75,0.95 0.5,0.95 C0.25,0.95 0.05,0.9 0.1,0.6 C0.15,0.3 0.35,0.05 0.5,0.05 Z"
                   ],
-                  scale: isHovering ? 0.45 : 0.3
+                  scale: isHovering ? 0.55 : 0.4
                 }}
                 transition={{ 
                   d: { duration: 4, repeat: Infinity, ease: "easeInOut" },
@@ -118,24 +125,19 @@ const HeroReveal: React.FC = () => {
                   transformOrigin: '50% 50%'
                 }}
               />
-              {/* Estela de la Mancha (Capa retrasada) */}
+              {/* Estela de la Gota */}
               <motion.path
                 animate={{ 
                   d: [
-                    "M0.5,0.2 C0.65,0.15 0.8,0.3 0.8,0.5 C0.8,0.7 0.65,0.85 0.5,0.8 C0.35,0.85 0.2,0.7 0.2,0.5 C0.2,0.3 0.35,0.15 0.5,0.2 Z",
-                    "M0.5,0.25 C0.75,0.15 0.85,0.4 0.75,0.6 C0.65,0.8 0.75,0.85 0.5,0.75 C0.25,0.85 0.15,0.8 0.25,0.6 C0.35,0.4 0.25,0.15 0.5,0.25 Z"
+                    "M0.5,0.2 C0.6,0.2 0.75,0.4 0.75,0.6 C0.75,0.8 0.65,0.85 0.5,0.85 C0.35,0.85 0.25,0.8 0.25,0.6 C0.25,0.4 0.4,0.2 0.5,0.2 Z"
                   ],
-                  scale: isHovering ? 0.35 : 0.2
-                }}
-                transition={{ 
-                  d: { duration: 5, repeat: Infinity, ease: "easeInOut" },
-                  scale: { duration: 0.5 }
+                  scale: isHovering ? 0.45 : 0.3
                 }}
                 style={{ 
                   x: trailTranslateX,
                   y: trailTranslateY,
                   transformOrigin: '50% 50%',
-                  opacity: 0.6
+                  opacity: 0.5
                 }}
               />
             </clipPath>
@@ -186,10 +188,22 @@ const HeroReveal: React.FC = () => {
       </div>
 
       {/* Texto Superpuesto Centrado */}
-      <div className="absolute inset-0 z-40 flex items-center justify-center pointer-events-none px-4">
+      <div className="absolute inset-0 z-40 flex flex-col items-center justify-center pointer-events-none px-4">
         <h1 className="text-5xl md:text-8xl font-bold text-white tracking-tighter leading-none text-center drop-shadow-2xl">
           TIRED OF <br className="md:hidden" /> THE PAIN?
         </h1>
+        
+        {/* Botón Mobile Parpadeante */}
+        <div className="absolute bottom-12 md:hidden pointer-events-auto">
+          <motion.button
+            onClick={scrollToNext}
+            animate={{ opacity: [0.4, 1, 0.4] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            className="px-8 py-3 bg-white text-black font-bold text-sm uppercase tracking-widest rounded-full shadow-lg active:scale-95 transition-transform"
+          >
+            Yes, no more.
+          </motion.button>
+        </div>
       </div>
     </section>
   );
