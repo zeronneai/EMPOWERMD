@@ -55,3 +55,52 @@
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: #0a0a0a; }
 ::-webkit-scrollbar-thumb { background: #3b0764; border-radius: 10px; }
+
+/* --- Hero Reveal Interaction Styles --- */
+
+/* Animación de Reposo (Idle) para la máscara */
+@keyframes mask-float {
+  0% {
+    --mask-x: 50%;
+    --mask-y: 50%;
+  }
+  25% {
+    --mask-x: 70%;
+    --mask-y: 30%;
+  }
+  50% {
+    --mask-x: 30%;
+    --mask-y: 70%;
+  }
+  75% {
+    --mask-x: 60%;
+    --mask-y: 60%;
+  }
+  100% {
+    --mask-x: 50%;
+    --mask-y: 50%;
+  }
+}
+
+.animate-mask-float {
+  animation: mask-float 15s ease-in-out infinite;
+}
+
+/* Soporte para variables CSS en animaciones (Chrome/Safari/Firefox modernos) */
+@property --mask-x {
+  syntax: '<percentage>';
+  inherits: true;
+  initial-value: 50%;
+}
+
+@property --mask-y {
+  syntax: '<percentage>';
+  inherits: true;
+  initial-value: 50%;
+}
+
+@property --mask-size {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 120px;
+}

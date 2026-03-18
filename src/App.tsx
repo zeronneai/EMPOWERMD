@@ -8,47 +8,9 @@ import { motion, AnimatePresence } from "motion/react";
 import { Zap, ArrowRight, Menu, X, MapPin, Phone, Mail, Check, Video } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import HeroReveal from "./components/HeroReveal";
 
 gsap.registerPlugin(ScrollTrigger);
-
-const slides = [
-  {
-    title: "BENEFITS OF DIRECT PRIMARY CARE",
-    image: "https://res.cloudinary.com/dsprn0ew4/image/upload/f_auto,q_auto/v1773764500/Image_generationgenerate_imagespromptsa_highqualit_delpmaspu_hgjud7.jpg"
-  },
-  {
-    title: "Unlimited visits",
-    image: "https://res.cloudinary.com/dsprn0ew4/image/upload/f_auto,q_auto/v1773764500/Based_on_the_scene_in_image_0png_an_open_minimalis_delpmaspu_dqi6nw.jpg"
-  },
-  {
-    title: "Direct access",
-    image: "https://res.cloudinary.com/dsprn0ew4/image/upload/f_auto,q_auto/v1773764500/Based_on_the_image_showing_the_agenda_image_1png_a_delpmaspu_iwtfvw.jpg"
-  },
-  {
-    title: "Same/Next-day appt.",
-    image: "https://res.cloudinary.com/dsprn0ew4/image/upload/f_auto,q_auto/v1773764500/Based_on_the_image_showing_the_agenda_and_smartpho_delpmaspu_uczgzs.jpg"
-  },
-  {
-    title: "30-60 min visits",
-    image: "https://res.cloudinary.com/dsprn0ew4/image/upload/f_auto,q_auto/v1773764499/Based_on_the_complete_desk_setup_agenda_smartphone_delpmaspu_rsvvtj.jpg"
-  },
-  {
-    title: "Transparent pricing",
-    image: "https://res.cloudinary.com/dsprn0ew4/image/upload/f_auto,q_auto/v1773764499/Based_on_the_complete_scene_image_5png_the_green_p_delpmaspu_yepcav.jpg"
-  },
-  {
-    title: "Prevention & Wellness",
-    image: "https://res.cloudinary.com/dsprn0ew4/image/upload/f_auto,q_auto/v1773764499/Based_on_the_complete_scene_image_5png_the_green_p_delpmaspu_yepcav.jpg"
-  },
-  {
-    title: "No insurance hassles",
-    image: "https://res.cloudinary.com/dsprn0ew4/image/upload/f_auto,q_auto/v1773764499/Based_on_the_complete_scene_image_6png_the_overall_delpmaspu_r4nui0.jpg"
-  },
-  {
-    title: "Personalized care",
-    image: "https://res.cloudinary.com/dsprn0ew4/image/upload/f_auto,q_auto/v1773764499/Based_on_the_completely_clear_scene_image_7png_add_delpmaspu_qdeu8c.jpg"
-  }
-];
 
 const Navbar = ({ onOpenServices, onOpenStory, onOpenWhatIs }: { onOpenServices: () => void; onOpenStory: () => void; onOpenWhatIs: () => void }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -150,119 +112,6 @@ const Navbar = ({ onOpenServices, onOpenStory, onOpenWhatIs }: { onOpenServices:
         </AnimatePresence>
       </motion.div>
     </nav>
-  );
-};
-
-const Hero = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const stickyRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top top",
-          end: "bottom bottom",
-          scrub: 1,
-        },
-      });
-
-      // Animate images and text
-      slides.forEach((_, index) => {
-        if (index === 0) return;
-
-        // Fade in current image
-        tl.to(`.slide-img-${index}`, {
-          opacity: 1,
-          duration: 1,
-          ease: "none",
-        }, index);
-
-        // Fade in current text, fade out previous
-        tl.fromTo(`.slide-text-${index}`, 
-          { opacity: 0, y: 50 },
-          { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" },
-          index
-        );
-        
-        tl.to(`.slide-text-${index - 1}`, 
-          { opacity: 0, y: -50, duration: 0.5, ease: "power2.in" },
-          index
-        );
-      });
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, []);
-
-  return (
-    <div ref={containerRef} className="relative h-[900vh] bg-[#0a0a0a]">
-      <div ref={stickyRef} className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center">
-        {/* Images Layer */}
-        <div className="absolute inset-0 z-0">
-          {slides.map((slide, i) => (
-            <div
-              key={i}
-              className={`absolute inset-0 bg-cover bg-center transition-transform duration-1000 slide-img-${i} ${i === 0 ? 'opacity-100' : 'opacity-0'}`}
-              style={{ 
-                backgroundImage: `url(${slide.image})`,
-                zIndex: i 
-              }}
-            />
-          ))}
-          {/* Overlay for readability */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/80 via-[#0a0a0a]/40 to-[#0a0a0a] z-[10]" />
-        </div>
-
-        {/* Text Content Layer */}
-        <div className="relative z-20 w-full px-12 md:px-24 flex flex-col justify-center items-center md:items-start h-full">
-          <div className="relative w-full max-w-3xl text-center md:text-left">
-            <div className="relative h-64 md:h-[400px] w-full">
-              {slides.map((slide, i) => (
-                <div
-                  key={i}
-                  className={`absolute inset-0 flex flex-col justify-center slide-text-${i} ${i === 0 ? 'opacity-100' : 'opacity-0'}`}
-                >
-                  <h1 className="hero-text text-5xl md:text-8xl font-bold leading-tight tracking-tighter uppercase mb-6">
-                    {slide.title}
-                  </h1>
-                </div>
-              ))}
-            </div>
-
-            {/* Fixed Button throughout scrollytelling */}
-            <div className="mt-12 relative z-30 w-full flex justify-center md:justify-start">
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.2 }}
-                className="glass-card p-1 rounded-full inline-block"
-              >
-                <a 
-                  href="https://empowermd.sigmamd.com/signup/membership2?step=enroll-members"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-purple-600 px-10 py-4 rounded-full font-bold hover:bg-purple-500 transition-all duration-300 cursor-pointer inline-block"
-                >
-                  JOIN NOW
-                </a>
-              </motion.div>
-            </div>
-          </div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <motion.div 
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-gray-500"
-        >
-          <span className="text-[10px] uppercase tracking-[0.3em]">Scroll para explorar</span>
-          <div className="w-[1px] h-12 bg-gradient-to-b from-purple-500 to-transparent" />
-        </motion.div>
-      </div>
-    </div>
   );
 };
 
@@ -1009,7 +858,7 @@ export default function App() {
       </div>
 
       <div className="relative z-10">
-        <Hero />
+        <HeroReveal />
         <Navbar 
           onOpenServices={() => setIsServicesModalOpen(true)} 
           onOpenStory={() => setIsStoryModalOpen(true)} 
