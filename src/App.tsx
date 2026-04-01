@@ -27,12 +27,12 @@ const Navbar = ({ onOpenServices, onOpenStory, onOpenWhatIs }: { onOpenServices:
         animate={{ y: 0, opacity: 1 }}
         className="glass-card py-4 px-6 md:px-8 flex justify-between items-center rounded-[40px] relative"
       >
-        <div className="text-lg md:text-xl font-bold tracking-tighter shrink-0">
+        <div className="text-lg md:text-xl font-bold tracking-tighter shrink-0 text-cyan-700">
           EMPOWER <span className="text-purple-400">MD</span>
         </div>
         
         {/* Desktop Links */}
-        <div className="hidden md:flex gap-8 text-sm uppercase tracking-widest font-light">
+        <div className="hidden md:flex gap-8 text-sm uppercase tracking-widest font-light text-cyan-600">
           <button 
             onClick={onOpenServices}
             className="hover:text-purple-400 transition cursor-pointer uppercase tracking-widest text-sm"
@@ -58,13 +58,13 @@ const Navbar = ({ onOpenServices, onOpenStory, onOpenWhatIs }: { onOpenServices:
             href="https://empowermd.sigmamd.com/signup/membership2?step=enroll-members"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden sm:block bg-white text-black px-4 md:px-6 py-2 rounded-full text-[10px] md:text-sm font-bold hover:bg-purple-400 transition cursor-pointer whitespace-nowrap"
+            className="hidden sm:block bg-cyan-600 text-white px-4 md:px-6 py-2 rounded-full text-[10px] md:text-sm font-bold hover:bg-purple-400 transition cursor-pointer whitespace-nowrap"
           >
             JOIN NOW
           </a>
           <button 
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden text-white p-2 hover:bg-white/10 rounded-full transition-colors flex items-center justify-center"
+            className="md:hidden text-cyan-600 p-2 hover:bg-cyan-500/10 rounded-full transition-colors flex items-center justify-center"
             aria-label="Toggle menu"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -79,23 +79,23 @@ const Navbar = ({ onOpenServices, onOpenStory, onOpenWhatIs }: { onOpenServices:
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -10, scale: 0.95 }}
               transition={{ duration: 0.2 }}
-              className="absolute top-full left-0 right-0 mt-4 glass-card p-8 rounded-[30px] flex flex-col gap-8 md:hidden border border-white/10 z-[60] shadow-2xl"
+              className="absolute top-full left-0 right-0 mt-4 glass-card p-8 rounded-[30px] flex flex-col gap-8 md:hidden border border-cyan-500/10 z-[60] shadow-2xl"
             >
               <button 
                 onClick={() => handleNavClick(onOpenServices)}
-                className="text-left text-white hover:text-purple-400 transition uppercase tracking-[0.2em] text-sm font-bold border-b border-white/5 pb-4"
+                className="text-left text-cyan-700 hover:text-purple-400 transition uppercase tracking-[0.2em] text-sm font-bold border-b border-cyan-500/5 pb-4"
               >
                 SERVICES
               </button>
               <button 
                 onClick={() => handleNavClick(onOpenStory)}
-                className="text-left text-white hover:text-purple-400 transition uppercase tracking-[0.2em] text-sm font-bold border-b border-white/5 pb-4"
+                className="text-left text-cyan-700 hover:text-purple-400 transition uppercase tracking-[0.2em] text-sm font-bold border-b border-cyan-500/5 pb-4"
               >
                 THE STORY
               </button>
               <button 
                 onClick={() => handleNavClick(onOpenWhatIs)}
-                className="text-left text-white hover:text-purple-400 transition uppercase tracking-[0.2em] text-sm font-bold border-b border-white/5 pb-4"
+                className="text-left text-cyan-700 hover:text-purple-400 transition uppercase tracking-[0.2em] text-sm font-bold border-b border-cyan-500/5 pb-4"
               >
                 WHAT IS?
               </button>
@@ -154,19 +154,19 @@ const FAQModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void })
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 bg-black/90 backdrop-blur-xl"
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 bg-white/90 backdrop-blur-xl"
         >
           <motion.div
             initial={{ scale: 0.9, opacity: 0, y: 20 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.9, opacity: 0, y: 20 }}
-            className="glass-card w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col rounded-[40px] border-white/10"
+            className="glass-card w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col rounded-[40px] border-cyan-500/10"
           >
-            <div className="p-8 border-b border-white/10 flex justify-between items-center bg-white/5">
-              <h2 className="text-3xl font-bold tracking-tighter uppercase">Frequently Asked Questions</h2>
+            <div className="p-8 border-b border-cyan-500/10 flex justify-between items-center bg-cyan-50/5">
+              <h2 className="text-3xl font-bold tracking-tighter uppercase text-cyan-600">Frequently Asked Questions</h2>
               <button 
                 onClick={onClose}
-                className="p-2 hover:bg-white/10 rounded-full transition-colors text-gray-400 hover:text-white"
+                className="p-2 hover:bg-cyan-500/10 rounded-full transition-colors text-cyan-400 hover:text-cyan-600"
               >
                 <X size={32} />
               </button>
@@ -177,14 +177,14 @@ const FAQModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void })
                 {faqs.map((faq, i) => (
                   <div key={i} className="space-y-3">
                     <h3 className="text-xl font-bold text-purple-400 tracking-tight">{faq.question}</h3>
-                    <p className="text-gray-300 leading-relaxed">{faq.answer}</p>
+                    <p className="text-cyan-900/70 leading-relaxed">{faq.answer}</p>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="p-8 border-t border-white/10 bg-white/5 text-center">
-              <p className="text-gray-500 text-xs uppercase tracking-widest">Empower MD • Personalized Healthcare Excellence</p>
+            <div className="p-8 border-t border-cyan-500/10 bg-cyan-50/5 text-center">
+              <p className="text-cyan-400 text-xs uppercase tracking-widest">Empower MD • Personalized Healthcare Excellence</p>
             </div>
           </motion.div>
         </motion.div>
@@ -224,19 +224,19 @@ const WhatIsModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 bg-black/90 backdrop-blur-xl"
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 bg-white/90 backdrop-blur-xl"
         >
           <motion.div
             initial={{ scale: 0.9, opacity: 0, y: 20 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.9, opacity: 0, y: 20 }}
-            className="glass-card w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col rounded-[40px] border-white/10"
+            className="glass-card w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col rounded-[40px] border-cyan-500/10"
           >
-            <div className="p-8 border-b border-white/10 flex justify-between items-center bg-white/5">
-              <h2 className="text-3xl font-bold tracking-tighter uppercase">What is Direct Primary Care?</h2>
+            <div className="p-8 border-b border-cyan-500/10 flex justify-between items-center bg-cyan-50/5">
+              <h2 className="text-3xl font-bold tracking-tighter uppercase text-cyan-600">What is Direct Primary Care?</h2>
               <button 
                 onClick={onClose}
-                className="p-2 hover:bg-white/10 rounded-full transition-colors text-gray-400 hover:text-white"
+                className="p-2 hover:bg-cyan-500/10 rounded-full transition-colors text-cyan-400 hover:text-cyan-600"
               >
                 <X size={32} />
               </button>
@@ -244,7 +244,7 @@ const WhatIsModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void
             
             <div className="p-8 overflow-y-auto custom-scrollbar">
               <div className="space-y-12">
-                <div className="space-y-6 text-gray-300 leading-relaxed text-lg">
+                <div className="space-y-6 text-cyan-900/70 leading-relaxed text-lg">
                   <p>
                     Direct Primary Care is a healthcare delivery model where patients pay a monthly or annual membership fee to have direct access to their primary care physician. This model eliminates the insurance company as a middleman, allowing doctors to focus on patient care rather than administrative tasks.
                   </p>
@@ -254,16 +254,16 @@ const WhatIsModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void
                 </div>
 
                 <div className="space-y-8">
-                  <h3 className="text-2xl font-bold text-center uppercase tracking-widest text-white">How It Works</h3>
+                  <h3 className="text-2xl font-bold text-center uppercase tracking-widest text-cyan-600">How It Works</h3>
                   <div className="space-y-4">
                     {steps.map((step, i) => (
-                      <div key={i} className="flex items-center gap-6 bg-white/5 p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors group">
+                      <div key={i} className="flex items-center gap-6 bg-cyan-50/30 p-6 rounded-2xl border border-cyan-500/10 hover:bg-cyan-100/30 transition-colors group">
                         <div className="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 font-bold text-xl border border-purple-500/30 group-hover:bg-purple-500 group-hover:text-white transition-all">
                           {step.number}
                         </div>
                         <div>
-                          <h4 className="text-xl font-bold text-white mb-1 tracking-tight">{step.title}</h4>
-                          <p className="text-gray-400 text-sm">{step.description}</p>
+                          <h4 className="text-xl font-bold text-cyan-700 mb-1 tracking-tight">{step.title}</h4>
+                          <p className="text-cyan-600/60 text-sm">{step.description}</p>
                         </div>
                       </div>
                     ))}
@@ -272,8 +272,8 @@ const WhatIsModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void
               </div>
             </div>
 
-            <div className="p-8 border-t border-white/10 bg-white/5 text-center">
-              <p className="text-gray-500 text-xs uppercase tracking-widest">Empower MD • Personalized Healthcare Excellence</p>
+            <div className="p-8 border-t border-cyan-500/10 bg-cyan-50/5 text-center">
+              <p className="text-cyan-400 text-xs uppercase tracking-widest">Empower MD • Personalized Healthcare Excellence</p>
             </div>
           </motion.div>
         </motion.div>
@@ -290,26 +290,26 @@ const StoryModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 bg-black/90 backdrop-blur-xl"
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 bg-white/90 backdrop-blur-xl"
         >
           <motion.div
             initial={{ scale: 0.9, opacity: 0, y: 20 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.9, opacity: 0, y: 20 }}
-            className="glass-card w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col rounded-[40px] border-white/10"
+            className="glass-card w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col rounded-[40px] border-cyan-500/10"
           >
-            <div className="p-8 border-b border-white/10 flex justify-between items-center bg-white/5">
-              <h2 className="text-3xl font-bold tracking-tighter uppercase">My Story</h2>
+            <div className="p-8 border-b border-cyan-500/10 flex justify-between items-center bg-cyan-50/5">
+              <h2 className="text-3xl font-bold tracking-tighter uppercase text-cyan-600">My Story</h2>
               <button 
                 onClick={onClose}
-                className="p-2 hover:bg-white/10 rounded-full transition-colors text-gray-400 hover:text-white"
+                className="p-2 hover:bg-cyan-500/10 rounded-full transition-colors text-cyan-400 hover:text-cyan-600"
               >
                 <X size={32} />
               </button>
             </div>
             
             <div className="p-8 overflow-y-auto custom-scrollbar">
-              <div className="space-y-6 text-gray-300 leading-relaxed text-lg">
+              <div className="space-y-6 text-cyan-900/70 leading-relaxed text-lg">
                 <p>
                   I'm a proud El Paso native and Socorro High School graduate with deep roots in this community. As a board-certified family physician, my journey has been shaped by a commitment to excellence and service. I earned my degrees at UTEP, completed medical school through Texas Tech, and trained right here in El Paso—where I was honored to serve as Chief Resident during my Family Medicine residency. This foundation gave me not just medical knowledge, but a profound understanding of the families and communities I serve.
                 </p>
@@ -322,8 +322,8 @@ const StoryModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
               </div>
             </div>
 
-            <div className="p-8 border-t border-white/10 bg-white/5 text-center">
-              <p className="text-gray-500 text-xs uppercase tracking-widest">Empower MD • Personalized Healthcare Excellence</p>
+            <div className="p-8 border-t border-cyan-500/10 bg-cyan-50/5 text-center">
+              <p className="text-cyan-400 text-xs uppercase tracking-widest">Empower MD • Personalized Healthcare Excellence</p>
             </div>
           </motion.div>
         </motion.div>
@@ -404,19 +404,19 @@ const ServicesModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 bg-black/90 backdrop-blur-xl"
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 bg-white/90 backdrop-blur-xl"
         >
           <motion.div
             initial={{ scale: 0.9, opacity: 0, y: 20 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.9, opacity: 0, y: 20 }}
-            className="glass-card w-full max-w-6xl max-h-[90vh] overflow-hidden flex flex-col rounded-[40px] border-white/10"
+            className="glass-card w-full max-w-6xl max-h-[90vh] overflow-hidden flex flex-col rounded-[40px] border-cyan-500/10"
           >
-            <div className="p-8 border-b border-white/10 flex justify-between items-center bg-white/5">
-              <h2 className="text-3xl font-bold tracking-tighter uppercase">Our Services</h2>
+            <div className="p-8 border-b border-cyan-500/10 flex justify-between items-center bg-cyan-50/5">
+              <h2 className="text-3xl font-bold tracking-tighter uppercase text-cyan-600">Our Services</h2>
               <button 
                 onClick={onClose}
-                className="p-2 hover:bg-white/10 rounded-full transition-colors text-gray-400 hover:text-white"
+                className="p-2 hover:bg-cyan-500/10 rounded-full transition-colors text-cyan-400 hover:text-cyan-600"
               >
                 <X size={32} />
               </button>
@@ -431,7 +431,7 @@ const ServicesModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
                     </h3>
                     <ul className="space-y-3">
                       {cat.items.map((item, i) => (
-                        <li key={i} className="text-gray-400 text-sm flex items-start gap-2 leading-tight">
+                        <li key={i} className="text-cyan-800/70 text-sm flex items-start gap-2 leading-tight">
                           <span className="text-purple-500 mt-1">•</span>
                           {item}
                         </li>
@@ -442,8 +442,8 @@ const ServicesModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
               </div>
             </div>
 
-            <div className="p-8 border-t border-white/10 bg-white/5 text-center">
-              <p className="text-gray-500 text-xs uppercase tracking-widest">Empower MD • Personalized Healthcare Excellence</p>
+            <div className="p-8 border-t border-cyan-500/10 bg-cyan-50/5 text-center">
+              <p className="text-cyan-400 text-xs uppercase tracking-widest">Empower MD • Personalized Healthcare Excellence</p>
             </div>
           </motion.div>
         </motion.div>
@@ -462,8 +462,8 @@ const Services = ({ isModalOpen, setIsModalOpen }: { isModalOpen: boolean; setIs
           whileHover={{ y: -10 }}
           className="md:col-span-8 glass-card p-12 min-h-[450px] flex flex-col justify-end relative overflow-hidden group rounded-[40px]"
         >
-          <h3 className="text-4xl font-bold mb-4">Healthcare Was Never Meant To Feel This Rushed.</h3>
-          <p className="text-gray-400 max-w-2xl leading-relaxed">
+          <h3 className="text-4xl font-bold mb-4 text-cyan-700">Healthcare Was Never Meant To Feel This Rushed.</h3>
+          <p className="text-cyan-800/70 max-w-2xl leading-relaxed">
             At EmpowerMD, Dr. Alba Nevarez offers Direct Primary Care in El Paso with longer visits, direct access to your doctor, and personalized care through a simple monthly membership.
             <br /><br />
             Members save up to 95% on items like lab work, enjoy same-day or next-day visits with no wait times, and get direct access to their doctor via text, phone, or email. You get personal, high-touch care without the hassle of traditional insurance.
@@ -476,7 +476,7 @@ const Services = ({ isModalOpen, setIsModalOpen }: { isModalOpen: boolean; setIs
           className="md:col-span-4 glass-card p-8 flex flex-col justify-center items-start bg-purple-600/10 border-purple-500/20 rounded-[40px]"
         >
           <h3 className="text-2xl font-bold mb-6 text-purple-400">INCLUDES:</h3>
-          <ul className="text-left space-y-3 text-gray-300 text-sm">
+          <ul className="text-left space-y-3 text-cyan-900/80 text-sm">
             <li className="flex items-center gap-2">✓ Urgent care</li>
             <li className="flex items-center gap-2">✓ Men's health</li>
             <li className="flex items-center gap-2">✓ Mental health care</li>
@@ -490,8 +490,8 @@ const Services = ({ isModalOpen, setIsModalOpen }: { isModalOpen: boolean; setIs
           whileHover={{ y: -10 }}
           className="md:col-span-4 glass-card p-8 flex flex-col justify-between group rounded-[40px]"
         >
-          <h3 className="text-2xl font-bold">VIEW OUR <br /> SERVICES</h3>
-          <p className="text-sm text-gray-400">Comprehensive care tailored to your needs, from primary care to urgent and mental health support.</p>
+          <h3 className="text-2xl font-bold text-cyan-700">VIEW OUR <br /> SERVICES</h3>
+          <p className="text-sm text-cyan-800/70">Comprehensive care tailored to your needs, from primary care to urgent and mental health support.</p>
           <button 
             onClick={() => setIsModalOpen(true)}
             className="text-purple-400 mt-6 flex items-center gap-2 group-hover:translate-x-2 transition-transform cursor-pointer"
@@ -501,10 +501,10 @@ const Services = ({ isModalOpen, setIsModalOpen }: { isModalOpen: boolean; setIs
         </motion.div>
 
         <motion.div 
-          className="md:col-span-8 glass-card p-12 bg-white/5 border-dashed border-white/20 flex items-center justify-center rounded-[40px]"
+          className="md:col-span-8 glass-card p-12 bg-cyan-50/30 border-dashed border-cyan-500/20 flex items-center justify-center rounded-[40px]"
         >
           <div className="text-center">
-            <h2 className="text-3xl font-light italic text-white/80">
+            <h2 className="text-3xl font-light italic text-cyan-800/80">
               "At EmpowerMD, we replace insurance hassles with personalized care that makes you feel heard."
             </h2>
           </div>
@@ -517,10 +517,10 @@ const Services = ({ isModalOpen, setIsModalOpen }: { isModalOpen: boolean; setIs
 const HealthcareComparison = ({ onOpenFAQ }: { onOpenFAQ: () => void }) => (
   <section className="py-24 px-6 max-w-7xl mx-auto relative">
     <div className="text-center mb-16">
-      <h2 className="text-4xl md:text-5xl font-bold mb-8 tracking-tight text-white">
+      <h2 className="text-4xl md:text-5xl font-bold mb-8 tracking-tight text-cyan-700">
         Why Patients Are Frustrated With Healthcare Today
       </h2>
-      <p className="text-gray-400 max-w-4xl mx-auto leading-relaxed text-lg">
+      <p className="text-cyan-800/70 max-w-4xl mx-auto leading-relaxed text-lg">
         Most patients today feel stuck in a healthcare system that moves too fast.
         Appointments are often rushed. Doctors are expected to see 25-35 patients
         per day, leaving little time to truly listen or understand a patient's health
@@ -528,7 +528,7 @@ const HealthcareComparison = ({ onOpenFAQ }: { onOpenFAQ: () => void }) => (
         few minutes with their provider. Patients deserve more than rushed visits and
         confusing insurance systems. They deserve a doctor who has time for them.
       </p>
-      <div className="w-full h-px bg-white/10 mt-16 max-w-3xl mx-auto"></div>
+      <div className="w-full h-px bg-cyan-500/10 mt-16 max-w-3xl mx-auto"></div>
     </div>
 
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
@@ -537,7 +537,7 @@ const HealthcareComparison = ({ onOpenFAQ }: { onOpenFAQ: () => void }) => (
         whileHover={{ y: -5 }}
         className="glass-card p-10 rounded-[40px] border-red-500/10 bg-red-500/5"
       >
-        <h3 className="text-2xl font-bold mb-8 text-red-400 uppercase tracking-widest">Traditional Healthcare</h3>
+        <h3 className="text-2xl font-bold mb-8 text-red-500 uppercase tracking-widest">Traditional Healthcare</h3>
         <ul className="space-y-6">
           {[
             "Limited appointment times",
@@ -545,7 +545,7 @@ const HealthcareComparison = ({ onOpenFAQ }: { onOpenFAQ: () => void }) => (
             "Copays and hidden fees",
             "Rushed consultations"
           ].map((item, i) => (
-            <li key={i} className="flex items-center gap-4 text-gray-400">
+            <li key={i} className="flex items-center gap-4 text-cyan-800/60">
               <X className="text-red-500/50 shrink-0" size={18} />
               <span className="text-sm font-medium">{item}</span>
             </li>
@@ -558,7 +558,7 @@ const HealthcareComparison = ({ onOpenFAQ }: { onOpenFAQ: () => void }) => (
         whileHover={{ y: -5 }}
         className="glass-card p-10 rounded-[40px] border-emerald-500/10 bg-emerald-500/5"
       >
-        <h3 className="text-2xl font-bold mb-8 text-emerald-400 uppercase tracking-widest">Direct Primary Care</h3>
+        <h3 className="text-2xl font-bold mb-8 text-emerald-600 uppercase tracking-widest">Direct Primary Care</h3>
         <ul className="space-y-6">
           {[
             "Unlimited visits and consultations",
@@ -566,7 +566,7 @@ const HealthcareComparison = ({ onOpenFAQ }: { onOpenFAQ: () => void }) => (
             "No copays or hidden fees",
             "Extended appointment times"
           ].map((item, i) => (
-            <li key={i} className="flex items-center gap-4 text-gray-400">
+            <li key={i} className="flex items-center gap-4 text-cyan-800/60">
               <Check className="text-emerald-500 shrink-0" size={18} />
               <span className="text-sm font-medium">{item}</span>
             </li>
@@ -578,7 +578,7 @@ const HealthcareComparison = ({ onOpenFAQ }: { onOpenFAQ: () => void }) => (
     <div className="text-center">
       <button 
         onClick={onOpenFAQ}
-        className="bg-emerald-500/20 text-emerald-400 px-8 py-3 rounded-full text-sm font-bold hover:bg-emerald-500/30 transition-all border border-emerald-500/30 uppercase tracking-widest cursor-pointer"
+        className="bg-emerald-500/10 text-emerald-600 px-8 py-3 rounded-full text-sm font-bold hover:bg-emerald-500/20 transition-all border border-emerald-500/30 uppercase tracking-widest cursor-pointer"
       >
         View Frequently Asked Questions
       </button>
@@ -587,20 +587,20 @@ const HealthcareComparison = ({ onOpenFAQ }: { onOpenFAQ: () => void }) => (
 );
 
 const Founder = () => (
-  <section className="py-32 bg-white/5 backdrop-blur-3xl border-y border-white/10">
+  <section className="py-32 bg-cyan-50/30 backdrop-blur-3xl border-y border-cyan-500/10">
     <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center gap-16">
       <div className="w-64 h-64 md:w-80 md:h-96 glass-card rounded-[40px] overflow-hidden border-2 border-purple-500/30">
         <img 
           src="https://res.cloudinary.com/dsprn0ew4/image/upload/f_auto,q_auto/v1773767420/Genera_esta_imagen_con_la_doctora_sonriendo_sin_te_delpmaspu_hltfcn.jpg" 
           alt="Dr. Alba Nidia Nevarez"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover object-top"
           referrerPolicy="no-referrer"
         />
       </div>
       <div className="flex-1">
         <span className="text-purple-400 text-xs font-bold tracking-widest uppercase mb-4 block">Founder & Visionary</span>
-        <h2 className="text-4xl font-bold mb-6">DR. ALBA NIDIA NEVAREZ</h2>
-        <div className="space-y-6 text-gray-400 leading-relaxed">
+        <h2 className="text-4xl font-bold mb-6 text-cyan-700">DR. ALBA NIDIA NEVAREZ</h2>
+        <div className="space-y-6 text-cyan-800/70 leading-relaxed">
           <p>
             Dr. Alba Nevarez founded EmpowerMD to restore the kind of doctor-patient relationship that many people feel has been lost in modern healthcare. After training at Texas Tech University Health Sciences Center, Dr. Nevarez returned home to El Paso with a mission to serve the community that shaped her.
           </p>
@@ -608,14 +608,14 @@ const Founder = () => (
             But working within the traditional healthcare system, she saw firsthand how difficult it was for physicians to give patients the time and attention they truly deserved. Doctors were forced to rush from room to room, while patients were left feeling unheard. That experience inspired Dr. Nevarez to create EmpowerMD, a new model of care focused on access, trust, and long-term health.
           </p>
           <div className="pt-4">
-            <h4 className="text-white font-bold uppercase tracking-widest text-sm mb-3">My Philosophy</h4>
-            <p className="italic text-lg text-purple-200">
+            <h4 className="text-cyan-700 font-bold uppercase tracking-widest text-sm mb-3">My Philosophy</h4>
+            <p className="italic text-lg text-purple-600">
               "I believe healthcare should be about healing relationships, not insurance hassles. At EmpowerMD, we're returning to the fundamentals of medicine; listening, caring, and healing."
             </p>
           </div>
         </div>
         <div className="h-[1px] w-32 bg-purple-500/50 my-8"></div>
-        <p className="text-sm text-gray-500 uppercase tracking-widest font-bold">Empower MD Founder</p>
+        <p className="text-sm text-cyan-800/40 uppercase tracking-widest font-bold">Empower MD Founder</p>
       </div>
     </div>
   </section>
@@ -655,11 +655,11 @@ const Pricing = () => {
   return (
     <section className="py-24 px-6 max-w-7xl mx-auto">
       <div className="text-center mb-16">
-        <div className="inline-block bg-purple-600/20 text-purple-400 text-[10px] font-bold uppercase tracking-[0.3em] px-4 py-1 rounded-full mb-4 border border-purple-500/30">
+        <div className="inline-block bg-purple-600/10 text-purple-400 text-[10px] font-bold uppercase tracking-[0.3em] px-4 py-1 rounded-full mb-4 border border-purple-500/30">
           Founder's Pricing • Limited Availability
         </div>
-        <h2 className="text-5xl font-bold mb-4 hero-text uppercase tracking-tighter">Your Health, Your Way</h2>
-        <p className="text-gray-400 uppercase tracking-[0.3em] text-xs">No hidden fees. No insurance hassles. Just care.</p>
+        <h2 className="text-5xl font-bold mb-4 text-cyan-700 uppercase tracking-tighter">Your Health, Your Way</h2>
+        <p className="text-cyan-800/60 uppercase tracking-[0.3em] text-xs">No hidden fees. No insurance hassles. Just care.</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -677,18 +677,18 @@ const Pricing = () => {
               </div>
             )}
             
-            <h3 className="text-2xl font-bold mb-6 uppercase tracking-tight">{plan.name}</h3>
+            <h3 className="text-2xl font-bold mb-6 uppercase tracking-tight text-cyan-700">{plan.name}</h3>
             
             <div className="mb-6">
               <span className="text-5xl font-bold text-purple-400">{plan.price}</span>
-              <span className="text-gray-500 text-sm">/month</span>
+              <span className="text-cyan-800/40 text-sm">/month</span>
             </div>
 
-            <p className="text-purple-300/80 text-sm font-medium mb-2">{plan.target}</p>
-            <p className="text-gray-500 text-[10px] italic mb-8 leading-tight">{plan.note}</p>
+            <p className="text-purple-600/80 text-sm font-medium mb-2">{plan.target}</p>
+            <p className="text-cyan-800/40 text-[10px] italic mb-8 leading-tight">{plan.note}</p>
 
             <div className="flex-1 mb-10">
-              <p className="text-gray-400 text-sm leading-relaxed">
+              <p className="text-cyan-800/70 text-sm leading-relaxed">
                 {plan.features}
               </p>
             </div>
@@ -700,7 +700,7 @@ const Pricing = () => {
               className={`w-full py-4 rounded-full font-bold transition-all duration-300 text-sm uppercase tracking-widest ${
                 plan.popular 
                 ? 'bg-purple-600 hover:bg-purple-500 text-white' 
-                : 'bg-white/10 hover:bg-white/20 text-white border border-white/10'
+                : 'bg-cyan-600 hover:bg-cyan-700 text-white border border-cyan-500/10'
               }`}
             >
               {plan.buttonText}
@@ -715,7 +715,7 @@ const Pricing = () => {
 const ContactForm = () => (
   <section className="py-24 px-6 max-w-4xl mx-auto relative">
     <div className="text-center mb-16">
-      <h2 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight text-white uppercase">
+      <h2 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight text-cyan-700 uppercase">
         Is Direct Primary Care Right for You?
       </h2>
       <div className="h-1 w-20 bg-purple-500 mx-auto"></div>
@@ -725,14 +725,14 @@ const ContactForm = () => (
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="glass-card p-8 md:p-12 rounded-[40px] border-white/10 bg-white/5"
+      className="glass-card p-8 md:p-12 rounded-[40px] border-cyan-500/10 bg-cyan-500/5"
     >
       <div className="flex flex-col items-center text-center mb-10">
-        <div className="w-16 h-16 bg-purple-500/20 rounded-full flex items-center justify-center mb-6 border border-purple-500/30">
+        <div className="w-16 h-16 bg-purple-500/10 rounded-full flex items-center justify-center mb-6 border border-purple-500/30">
           <Video className="text-purple-400" size={32} />
         </div>
-        <h3 className="text-3xl font-bold mb-4 tracking-tight">Request a Video Call</h3>
-        <p className="text-gray-400 max-w-lg leading-relaxed">
+        <h3 className="text-3xl font-bold mb-4 tracking-tight text-cyan-700">Request a Video Call</h3>
+        <p className="text-cyan-800/70 max-w-lg leading-relaxed">
           Let Dr. Nevarez know you're interested in scheduling a complimentary 10 minute video meet and greet. We'll reach out to confirm your appointment.
         </p>
       </div>
@@ -740,45 +740,45 @@ const ContactForm = () => (
       <form className="space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-2">
-            <label className="text-xs font-bold uppercase tracking-widest text-gray-500 ml-4">Full Name</label>
+            <label className="text-xs font-bold uppercase tracking-widest text-cyan-800/40 ml-4">Full Name</label>
             <input 
               type="text" 
               placeholder="Your Full Name"
-              className="w-full bg-white/5 border border-white/10 rounded-full px-6 py-4 text-white placeholder:text-gray-600 focus:outline-none focus:border-purple-500/50 transition-colors"
+              className="w-full bg-cyan-500/5 border border-cyan-500/10 rounded-full px-6 py-4 text-cyan-900 placeholder:text-cyan-800/30 focus:outline-none focus:border-purple-500/50 transition-colors"
             />
           </div>
           <div className="space-y-2">
-            <label className="text-xs font-bold uppercase tracking-widest text-gray-500 ml-4">Email</label>
+            <label className="text-xs font-bold uppercase tracking-widest text-cyan-800/40 ml-4">Email</label>
             <input 
               type="email" 
               placeholder="your@email.com"
-              className="w-full bg-white/5 border border-white/10 rounded-full px-6 py-4 text-white placeholder:text-gray-600 focus:outline-none focus:border-purple-500/50 transition-colors"
+              className="w-full bg-cyan-500/5 border border-cyan-500/10 rounded-full px-6 py-4 text-cyan-900 placeholder:text-cyan-800/30 focus:outline-none focus:border-purple-500/50 transition-colors"
             />
           </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-2">
-            <label className="text-xs font-bold uppercase tracking-widest text-gray-500 ml-4">Phone</label>
+            <label className="text-xs font-bold uppercase tracking-widest text-cyan-800/40 ml-4">Phone</label>
             <input 
               type="tel" 
               placeholder="(915) 123-4567"
-              className="w-full bg-white/5 border border-white/10 rounded-full px-6 py-4 text-white placeholder:text-gray-600 focus:outline-none focus:border-purple-500/50 transition-colors"
+              className="w-full bg-cyan-500/5 border border-cyan-500/10 rounded-full px-6 py-4 text-cyan-900 placeholder:text-cyan-800/30 focus:outline-none focus:border-purple-500/50 transition-colors"
             />
           </div>
           <div className="space-y-2">
-            <label className="text-xs font-bold uppercase tracking-widest text-gray-500 ml-4">Membership Interest</label>
-            <select className="w-full bg-white/5 border border-white/10 rounded-full px-6 py-4 text-white focus:outline-none focus:border-purple-500/50 transition-colors appearance-none cursor-pointer">
-              <option className="bg-[#0a0a0a]">Individual Membership</option>
-              <option className="bg-[#0a0a0a]">Couple Membership</option>
-              <option className="bg-[#0a0a0a]">Family Membership</option>
+            <label className="text-xs font-bold uppercase tracking-widest text-cyan-800/40 ml-4">Membership Interest</label>
+            <select className="w-full bg-cyan-500/5 border border-cyan-500/10 rounded-full px-6 py-4 text-cyan-900 focus:outline-none focus:border-purple-500/50 transition-colors appearance-none cursor-pointer">
+              <option className="bg-white">Individual Membership</option>
+              <option className="bg-white">Couple Membership</option>
+              <option className="bg-white">Family Membership</option>
             </select>
           </div>
         </div>
 
         <button 
           type="submit"
-          className="w-full bg-purple-600 hover:bg-purple-500 text-white font-bold py-5 rounded-full transition-all duration-300 uppercase tracking-[0.2em] text-sm mt-4 shadow-lg shadow-purple-600/20"
+          className="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-5 rounded-full transition-all duration-300 uppercase tracking-[0.2em] text-sm mt-4 shadow-lg shadow-cyan-600/20"
         >
           Request Callback
         </button>
@@ -788,12 +788,12 @@ const ContactForm = () => (
 );
 
 const Footer = () => (
-  <footer className="py-20 px-6 border-t border-white/10 relative overflow-hidden">
-    <div className="absolute top-0 right-0 w-96 h-96 bg-purple-600/20 blur-[150px] -z-10"></div>
+  <footer className="py-20 px-6 border-t border-cyan-500/10 relative overflow-hidden">
+    <div className="absolute top-0 right-0 w-96 h-96 bg-purple-600/10 blur-[150px] -z-10"></div>
     <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16">
       <div>
-        <h3 className="text-2xl font-bold mb-6">EMPOWER MD</h3>
-        <p className="text-gray-500 text-sm leading-relaxed">Redefining healthcare in El Paso through personalized medicine and cutting-edge technology.</p>
+        <h3 className="text-2xl font-bold mb-6 text-cyan-700">EMPOWER MD</h3>
+        <p className="text-cyan-800/60 text-sm leading-relaxed">Redefining healthcare in El Paso through personalized medicine and cutting-edge technology.</p>
       </div>
       <div>
         <h4 className="text-xs font-bold tracking-[0.3em] uppercase mb-8 text-purple-400">CONTACT</h4>
@@ -801,8 +801,8 @@ const Footer = () => (
           <div className="flex gap-4">
             <MapPin className="text-purple-400 shrink-0" size={20} />
             <div>
-              <p className="text-xs font-bold text-white uppercase tracking-widest mb-1">Address</p>
-              <p className="text-sm text-gray-500 leading-relaxed">
+              <p className="text-xs font-bold text-cyan-700 uppercase tracking-widest mb-1">Address</p>
+              <p className="text-sm text-cyan-800/60 leading-relaxed">
                 1265 Joe Battle Blvd, Suite 102B<br />
                 El Paso, TX 79936
               </p>
@@ -811,15 +811,15 @@ const Footer = () => (
           <div className="flex gap-4">
             <Phone className="text-purple-400 shrink-0" size={20} />
             <div>
-              <p className="text-xs font-bold text-white uppercase tracking-widest mb-1">Phone</p>
-              <p className="text-sm text-gray-500">915.235.3768</p>
+              <p className="text-xs font-bold text-cyan-700 uppercase tracking-widest mb-1">Phone</p>
+              <p className="text-sm text-cyan-800/60">915.235.3768</p>
             </div>
           </div>
           <div className="flex gap-4">
             <Mail className="text-purple-400 shrink-0" size={20} />
             <div>
-              <p className="text-xs font-bold text-white uppercase tracking-widest mb-1">Email</p>
-              <p className="text-sm text-gray-500">membership@empowermdelpaso.com</p>
+              <p className="text-xs font-bold text-cyan-700 uppercase tracking-widest mb-1">Email</p>
+              <p className="text-sm text-cyan-800/60">membership@empowermdelpaso.com</p>
             </div>
           </div>
         </div>
@@ -830,15 +830,15 @@ const Footer = () => (
           <input 
             type="email" 
             placeholder="Email" 
-            className="w-full bg-transparent border-b border-white/20 py-2 focus:border-purple-500 outline-none transition"
+            className="w-full bg-transparent border-b border-cyan-500/20 py-2 focus:border-purple-500 outline-none transition text-cyan-900"
           />
-          <button className="absolute right-0 top-2 text-xs font-bold uppercase tracking-widest cursor-pointer hover:text-purple-400 transition">
+          <button className="absolute right-0 top-2 text-xs font-bold uppercase tracking-widest cursor-pointer hover:text-purple-400 transition text-cyan-700">
             Join
           </button>
         </div>
       </div>
     </div>
-    <div className="mt-20 text-center text-[10px] tracking-widest text-gray-600 uppercase">
+    <div className="mt-20 text-center text-[10px] tracking-widest text-cyan-800/40 uppercase">
       © {new Date().getFullYear()} Empower MD • Engineering Human Potential
     </div>
   </footer>
@@ -851,7 +851,7 @@ export default function App() {
   const [isWhatIsModalOpen, setIsWhatIsModalOpen] = useState(false);
 
   return (
-    <div className="bg-[#0a0a0a] text-white font-sans selection:bg-purple-500/30">
+    <div className="bg-white text-cyan-900 font-sans selection:bg-purple-500/30">
       {/* Mesh Gradient Background */}
       <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
         <div className="mesh-gradient absolute inset-0 animate-mesh" />

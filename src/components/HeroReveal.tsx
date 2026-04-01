@@ -84,7 +84,7 @@ const HeroReveal: React.FC = () => {
           <img 
             src="https://res.cloudinary.com/dsprn0ew4/image/upload/v1773870186/Extreme_high-quality_studio_202603181531_bjwqzq.webp" 
             alt="Hombre Triste"
-            className="w-full h-full object-cover grayscale brightness-75 blur-[3px]"
+            className="w-full h-full object-cover object-top md:object-center grayscale brightness-75 blur-[3px]"
             referrerPolicy="no-referrer"
           />
           {/* Capa de gris neutro */}
@@ -102,7 +102,7 @@ const HeroReveal: React.FC = () => {
           <img 
             src="https://res.cloudinary.com/dsprn0ew4/image/upload/v1773870187/Extreme_high-quality_studio_202603181531-_1__rmvit5.webp" 
             alt="Hombre Feliz"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-top md:object-center"
             referrerPolicy="no-referrer"
           />
         </div>
