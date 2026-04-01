@@ -14,6 +14,15 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Navbar = ({ onOpenServices, onOpenStory, onOpenWhatIs }: { onOpenServices: () => void; onOpenStory: () => void; onOpenWhatIs: () => void }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > window.innerHeight - 100);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleNavClick = (callback: () => void) => {
     callback();
@@ -21,14 +30,44 @@ const Navbar = ({ onOpenServices, onOpenStory, onOpenWhatIs }: { onOpenServices:
   };
 
   return (
-    <nav className="sticky top-6 z-50 w-[90%] max-w-5xl mx-auto mb-12">
+    <nav className={`fixed z-50 transition-all duration-500 left-0 right-0 mx-auto ${isScrolled ? 'top-0 md:top-6 w-full md:w-[90%] opacity-100 translate-y-0' : 'top-0 w-full opacity-0 -translate-y-full pointer-events-none'} max-w-5xl`}>
       <motion.div 
-        initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        className="glass-card py-4 px-6 md:px-8 flex justify-between items-center rounded-[40px] relative"
+        className={`glass-card py-4 px-6 md:px-8 flex justify-between items-center relative transition-all duration-300 ${isScrolled ? 'rounded-none md:rounded-[40px]' : 'rounded-none'}`}
       >
         <div className="text-lg md:text-xl font-bold tracking-tighter shrink-0 text-cyan-700">
-          EMPOWER <span className="text-purple-400">MD</span>
+          <div className="hidden md:block">
+            EMPOWER <span className="text-purple-400">MD</span>
+          </div>
+          <div className="md:hidden block">
+            <AnimatePresence mode="wait">
+              {isScrolled ? (
+                <motion.div
+                  key="join-btn"
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -10 }}
+                >
+                  <a 
+                    href="https://empowermd.sigmamd.com/signup/membership2?step=enroll-members"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-cyan-600 text-white px-4 py-2 rounded-full text-[10px] font-bold hover:bg-purple-400 transition cursor-pointer whitespace-nowrap shadow-lg shadow-cyan-600/20 inline-block"
+                  >
+                    JOIN NOW
+                  </a>
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="logo"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                >
+                  EMPOWER <span className="text-purple-400">MD</span>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
         </div>
         
         {/* Desktop Links */}
@@ -858,12 +897,12 @@ export default function App() {
       </div>
 
       <div className="relative z-10">
-        <HeroReveal />
         <Navbar 
           onOpenServices={() => setIsServicesModalOpen(true)} 
           onOpenStory={() => setIsStoryModalOpen(true)} 
           onOpenWhatIs={() => setIsWhatIsModalOpen(true)}
         />
+        <HeroReveal />
         <StoryModal isOpen={isStoryModalOpen} onClose={() => setIsStoryModalOpen(false)} />
         <WhatIsModal isOpen={isWhatIsModalOpen} onClose={() => setIsWhatIsModalOpen(false)} />
         <FAQModal isOpen={isFAQModalOpen} onClose={() => setIsFAQModalOpen(false)} />
